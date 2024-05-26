@@ -23,24 +23,23 @@ public class Game {
 			Decision decision = currentPlayer.makeDecision();
 
 			boolean isValidDecision = playground.setItemInGap(decision.row(), decision.column(), currentPlayer.getSymbol());
-			if (isValidDecision && this.isOver(decision)) {
+			if (!isValidDecision) {
+				System.out.println(Constants.INVALID_DECISION);
+				continue;
+			}
+
+			if (this.isOver(decision)) {
 				break;
 			}
 
-			if (!isValidDecision) {
-				System.out.println(Constants.INVALID_DECISION);
-			} else {
-				playground.display();
-				playerManager.changePlayer();
-			}
+			playground.display();
+			playerManager.changePlayer();
 		}
 		System.out.printf(Constants.PLAYER_WINS, playerManager.getCurrentPlayer());
 	}
 
 	private boolean isOver(Decision decision) {
-		int lastRow = decision.row();
-		int lastColumn = decision.column();
-		return playground.rowItemsSame(lastRow) || playground.columnItemsSame(lastColumn)
+		return playground.rowItemsSame(decision.row()) || playground.columnItemsSame(decision.column())
 				|| playground.diagonalItemsSame() || playground.antiDiagonalItemsSame();
 	}
 }
