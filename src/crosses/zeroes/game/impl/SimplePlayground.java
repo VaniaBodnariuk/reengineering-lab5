@@ -5,7 +5,6 @@ import crosses.zeroes.game.Playground;
 import java.util.Arrays;
 
 public class SimplePlayground implements Playground {
-
     private static char[][] board;
 
     public SimplePlayground() {

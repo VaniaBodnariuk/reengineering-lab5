@@ -5,7 +5,6 @@ import crosses.zeroes.game.PlayerManager;
 import java.util.Scanner;
 
 public class PeerPlayerManager implements PlayerManager {
-
     private UserPlayer currentPlayer;
     private UserPlayer nextPlayer;
 

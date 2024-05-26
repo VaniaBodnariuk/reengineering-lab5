@@ -5,6 +5,11 @@ import crosses.zeroes.game.PlayerManager;
 import crosses.zeroes.game.Playground;
 
 public class Game {
+	private static final String WELCOME_TO_GAME = "Welcome to Game!";
+	private static final String MAKE_DECISION = "Player %s, make your decision (row and column, 1-3):";
+	private static final String INVALID_DECISION = "Decision is not valid, please try again";
+	private static final String PLAYER_WINS = "Player %s wins!";
+
 	private final Playground playground;
 	private final PlayerManager playerManager;
 
@@ -14,11 +19,11 @@ public class Game {
 	}
 
 	public void play() {
-		System.out.println("Welcome to Game!");
+		System.out.println(WELCOME_TO_GAME);
 		playground.display();
 		while (true) {
 			Player currentPlayer = playerManager.getCurrentPlayer();
-			System.out.println("Player " + currentPlayer + ", make your decision (row and column, 1-3):");
+			System.out.printf(MAKE_DECISION, currentPlayer);
 			Decision decision = currentPlayer.makeDecision();
 
 			boolean isValidDecision = playground.setItemInGap(decision.row(), decision.column(), currentPlayer.getSymbol());
@@ -27,13 +32,13 @@ public class Game {
 			}
 
 			if (!isValidDecision) {
-				System.out.println("Decision is not valid, please try again");
+				System.out.println(INVALID_DECISION);
 			} else {
 				playerManager.changePlayer();
 				playground.display();
 			}
 		}
-		System.out.println("Player " + playerManager.getCurrentPlayer() + " wins!");
+		System.out.printf(PLAYER_WINS, playerManager.getCurrentPlayer());
 	}
 
 	private boolean isOver(Decision decision) {
