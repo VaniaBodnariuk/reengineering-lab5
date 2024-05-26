@@ -1,5 +1,6 @@
 package crosses.zeroes.game.impl;
 
+import crosses.zeroes.game.Constants;
 import crosses.zeroes.game.Player;
 
 import java.util.Objects;
@@ -17,7 +18,7 @@ public class UserPlayer implements Player {
 
     private void checkSymbolIsNotGap(Symbol symbol) {
         if (Symbol.GAP.equals(symbol)) {
-            throw new IllegalArgumentException("Symbol can not be a gap");
+            throw new IllegalArgumentException(Constants.SYMBOL_CAN_NOT_BE_A_GAP);
         }
     }
 
