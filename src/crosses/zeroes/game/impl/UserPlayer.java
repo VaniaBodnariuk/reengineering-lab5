@@ -15,7 +15,7 @@ public class UserPlayer implements Player {
         this.scanner = scanner;
     }
 
-    void checkSymbolIsNotGap(Symbol symbol) {
+    private void checkSymbolIsNotGap(Symbol symbol) {
         if (Symbol.GAP.equals(symbol)) {
             throw new IllegalArgumentException("Symbol can not be a gap");
         }
